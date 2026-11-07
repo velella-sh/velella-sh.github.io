@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velella</title>
+<meta name="description" content="Velella builds open-source tools that find what breaks next. Stay afloat. Ready for any wind.">
+<meta property="og:title" content="Velella">
+<meta property="og:description" content="Stay afloat. Ready for any wind.">
+<meta property="og:url" content="https://velella.sh">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root, [data-theme="night"] {
+    --bg:#1f1f28; --surface:#2a2a37; --overlay:#363646; --highlight:#54546d;
+    --muted:#727169; --subtle:#c8c093; --text:#dcd7ba;
+    --accent:#7e9cd8; --accent-text:#7fb4ca; --on-accent:#1f1f28;
+    --string:#98bb6c; --keyword:#957fb8; --number:#ffa066; --variable:#e6c384;
+    color-scheme: dark;
+  }
+  [data-theme="day"] {
+    --bg:#eceff4; --surface:#e5e9f0; --overlay:#d8dee9; --highlight:#c5cddc;
+    --muted:#8892a6; --subtle:#4c566a; --text:#2e3440;
+    --accent:#5e81ac; --accent-text:#4c6f9a; --on-accent:#fff;
+    --string:#6c8a52; --keyword:#5e81ac; --number:#94638a; --variable:#b07d2b;
+    color-scheme: light;
+  }
+  :root {
+    --border: color-mix(in srgb, var(--highlight) 55%, var(--bg));
+    --sans:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{font-size:16px}
+  body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-text);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:3px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+  code{font-family:var(--mono)}
+  .wrap{max-width:62rem;margin-inline:auto;padding-inline:1.5rem}
+
+  header{display:flex;align-items:center;gap:1.5rem;padding-block:1.25rem}
+  .brand{display:inline-flex;align-items:center;gap:.6rem;color:var(--text);font-weight:650;font-size:1.0625rem;letter-spacing:-.01em}
+  .brand:hover{text-decoration:none}
+  .brand svg{width:1.6rem;height:1.6rem;fill:var(--text)}
+  nav{margin-inline-start:auto;display:flex;align-items:center;gap:1.25rem;font-size:.9375rem}
+  nav a{color:var(--subtle)} nav a:hover{color:var(--text);text-decoration:none}
+  .theme{all:unset;cursor:pointer;display:inline-grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:6px;color:var(--subtle)}
+  .theme:hover{background:var(--overlay);color:var(--text)}
+  .theme svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+  .hero{padding-block:6rem 4.5rem;border-block-end:1px solid var(--border)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font:500 .8125rem var(--mono);color:var(--accent-text);padding:.2rem .7rem;background:var(--surface);border:1px solid var(--border);border-radius:999px}
+  .eyebrow i{width:.45rem;height:.45rem;border-radius:50%;background:var(--string)}
+  h1{margin:1.5rem 0 0;font-size:clamp(2.75rem,8vw,5.5rem);line-height:1.02;letter-spacing:-.04em;font-weight:650;text-wrap:balance;max-width:14ch}
+  h1 em{font-style:normal;color:var(--accent-text)}
+  .lead{margin:1.5rem 0 0;font-size:1.25rem;color:var(--subtle);max-width:36rem}
+
+  section{padding-block:3.5rem;border-block-end:1px solid var(--border)}
+  .label{font:500 .8125rem var(--mono);color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin:0 0 1.25rem}
+  h2{margin:0;font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-.03em;font-weight:650}
+  .sub{margin:.75rem 0 0;color:var(--subtle);max-width:38rem;font-size:1.0625rem}
+
+  .project{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:3rem;align-items:center}
+  .points{display:grid;gap:1.1rem;margin:2rem 0 0;padding:0;list-style:none}
+  .points b{display:block;font-weight:600}
+  .points span{color:var(--subtle);font-size:.9375rem}
+  .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-block-start:2rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;height:2.5rem;padding-inline:1.1rem;border-radius:6px;font-weight:550;font-size:.9375rem;border:1px solid transparent}
+  .btn:hover{text-decoration:none}
+  .btn-primary{background:var(--accent);color:var(--on-accent)} .btn-primary:hover{filter:brightness(1.08)}
+  .btn-quiet{background:var(--surface);border-color:var(--border);color:var(--text)} .btn-quiet:hover{border-color:var(--highlight)}
+
+  .code{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+  .code-head{display:flex;align-items:center;gap:.5rem;padding:.55rem .9rem;background:var(--overlay);border-block-end:1px solid var(--border);font:.8125rem var(--mono);color:var(--subtle)}
+  .code pre{margin:0;padding:1rem 1.1rem;font:.875rem/1.85 var(--mono);overflow-x:auto}
+  .p{color:var(--muted);user-select:none} .k{color:var(--keyword)} .s{color:var(--string)} .n{color:var(--number)} .v{color:var(--variable)} .c{color:var(--muted);font-style:italic}
+
+  .values{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:2rem;margin-block-start:2rem}
+  .values h3{margin:0;font-size:1.0625rem;font-weight:600}
+  .values p{margin:.35rem 0 0;color:var(--subtle);font-size:.9375rem}
+
+  .story{max-width:40rem;color:var(--subtle);font-size:1.0625rem}
+  .story p{margin:0 0 1rem}
+
+  footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;font-size:.875rem;color:var(--subtle)}
+  footer .sp{margin-inline-start:auto}
+
+  @media(max-width:48rem){
+    .hero{padding-block:3.5rem 3rem}
+    .project{grid-template-columns:1fr;gap:2rem}
+    nav .hide{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><path d="M14 24 L40 24 L57 98 A90 90 0 0 1 14 24 Z"/><path d="M106 24 L80 24 L63 98 A90 90 0 0 0 106 24 Z"/></svg>
+      velella
+    </a>
+    <nav aria-label="Main">
+      <a href="#evergreen">Evergreen</a>
+      <a href="#how" class="hide">How we build</a>
+      <a href="https://github.com/velella-sh">GitHub</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <span class="eyebrow"><i aria-hidden="true"></i>open source · local-first</span>
+      <h1>Stay afloat.<br><em>Ready for any wind.</em></h1>
+      <p class="lead">Velella builds open-source tools that find what breaks next, before it breaks your build.</p>
+    </div>
+
+    <section id="evergreen">
+      <p class="label">Now</p>
+      <div class="project">
+        <div>
+          <h2>Evergreen</h2>
+          <p class="sub">Finds end-of-life and deprecated runtimes, packages, and GitHub Actions in your repository. Every finding shows the exact file and line, an authoritative source, a replacement, and migration steps.</p>
+          <ul class="points">
+            <li><b>Deterministic and offline</b><span>No account, no network call, the same result every run.</span></li>
+            <li><b>Honest about gaps</b><span>No rule for a package? It says no-data, never safe.</span></li>
+            <li><b>For people and agents</b><span>CLI, local MCP server, GitHub Action with SARIF, and an Agent Skill.</span></li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://github.com/arminazimi/evergreen">View on GitHub</a>
+            <a class="btn btn-quiet" href="https://arminazimi.github.io/evergreen/">Read the docs</a>
+          </div>
+        </div>
+        <div class="code" aria-label="Example">
+          <div class="code-head">terminal</div>
+<pre><span class="p">$</span> npx @velella/evergreen scan
+
+<span class="v">Dockerfile:1</span>
+  <span class="k">node:18</span> reached end of life
+  <span class="c">source:</span> nodejs.org/en/about/previous-releases
+  <span class="c">move to</span> <span class="s">node:22</span>
+
+<span class="v">.github/workflows/ci.yml:14</span>
+  <span class="k">actions/checkout@v3</span> runs on a retired runtime
+  <span class="c">move to</span> <span class="s">actions/checkout@v4</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <p class="label">How we build</p>
+      <h2>Four rules we do not bend.</h2>
+      <div class="values">
+        <div><h3>Exact</h3><p>File, line, version. Not a vague warning.</p></div>
+        <div><h3>Sourced</h3><p>Every claim points to the people who own the fact.</p></div>
+        <div><h3>Honest</h3><p>We say what we do not know instead of guessing.</p></div>
+        <div><h3>Local-first</h3><p>Your code stays on your machine.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <p class="label">Why Velella</p>
+      <div class="story">
+        <p>A Velella is a small blue sailor that drifts on the open sea. It carries a sail, reads the wind, and travels in colonies of thousands, each one small, together hard to stop.</p>
+        <p>That is the idea: small, sharp tools that work together, so your software keeps moving when the wind changes.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© Velella</span>
+    <a href="https://github.com/velella-sh">GitHub</a>
+    <a href="mailto:hello@velella.sh">hello@velella.sh</a>
+    <span class="sp">Stay afloat. Ready for any wind.</span>
+  </footer>
+</div>
+<script>
+  (function(){
+    var root=document.documentElement, key='velella-theme', saved=null;
+    try{saved=localStorage.getItem(key)}catch(e){}
+    var t=saved||(matchMedia('(prefers-color-scheme: light)').matches?'day':'night');
+    root.dataset.theme=t;
+    document.getElementById('theme').addEventListener('click',function(){
+      t=root.dataset.theme==='night'?'day':'night'; root.dataset.theme=t;
+      try{localStorage.setItem(key,t)}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
