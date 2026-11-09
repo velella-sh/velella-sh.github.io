@@ -103,7 +103,7 @@
       velella
     </a>
     <nav aria-label="Main">
-      <a href="#evergreen">Evergreen</a>
+      <a href="#ebb">Ebb</a>
       <a href="#how" class="hide">How we build</a>
       <a href="https://github.com/velella-sh">GitHub</a>
       <button class="theme" id="theme" type="button" aria-label="Switch theme">
@@ -119,34 +119,33 @@
       <p class="lead">Velella builds open-source tools that find what breaks next, before it breaks your build.</p>
     </div>
 
-    <section id="evergreen">
+    <section id="ebb">
       <p class="label">Now</p>
       <div class="project">
         <div>
-          <h2>Evergreen</h2>
-          <p class="sub">Finds end-of-life and deprecated runtimes, packages, and GitHub Actions in your repository. Every finding shows the exact file and line, an authoritative source, a replacement, and migration steps.</p>
+          <h2>Ebb</h2>
+          <p class="sub">The open almanac of software end-of-life. 752 rules across 25 ecosystems say what is deprecated, unsupported or removed, since when, and what to move to. Every rule cites its source.</p>
           <ul class="points">
-            <li><b>Deterministic and offline</b><span>No account, no network call, the same result every run.</span></li>
-            <li><b>Honest about gaps</b><span>No rule for a package? It says no-data, never safe.</span></li>
-            <li><b>For people and agents</b><span>CLI, local MCP server, GitHub Action with SARIF, and an Agent Skill.</span></li>
+            <li><b>Evidence, not opinion</b><span>Each rule names the authoritative source, the date it was read, and who reviewed it.</span></li>
+            <li><b>Standard identifiers</b><span>Components are named by purl and versions by VERS, so any tool can ask.</span></li>
+            <li><b>Offline by default</b><span>The rules ship inside the package. No account, no network call.</span></li>
           </ul>
           <div class="actions">
-            <a class="btn btn-primary" href="https://github.com/arminazimi/evergreen">View on GitHub</a>
-            <a class="btn btn-quiet" href="https://arminazimi.github.io/evergreen/">Read the docs</a>
+            <a class="btn btn-primary" href="https://github.com/velella-sh/ebb">View on GitHub</a>
+            <a class="btn btn-quiet" href="https://www.npmjs.com/package/@velella/ebb">npm</a>
           </div>
         </div>
         <div class="code" aria-label="Example">
-          <div class="code-head">terminal</div>
-<pre><span class="p">$</span> npx @velella/evergreen scan
+          <div class="code-head">lookup.ts</div>
+<pre><span class="k">import</span> { lookupProduct } <span class="k">from</span> <span class="s">"@velella/ebb/lookup"</span>;
 
-<span class="v">Dockerfile:1</span>
-  <span class="k">node:18</span> reached end of life
-  <span class="c">source:</span> nodejs.org/en/about/previous-releases
-  <span class="c">move to</span> <span class="s">node:22</span>
+<span class="k">const</span> <span class="v">node</span> = <span class="k">await</span> lookupProduct(<span class="s">"node"</span>, <span class="s">"18.20.4"</span>);
+node.status;   <span class="c">// "end-of-life"</span>
+node.deadline; <span class="c">// "2025-04-30"</span>
 
-<span class="v">.github/workflows/ci.yml:14</span>
-  <span class="k">actions/checkout@v3</span> runs on a retired runtime
-  <span class="c">move to</span> <span class="s">actions/checkout@v4</span></pre>
+<span class="k">const</span> <span class="v">req</span> = <span class="k">await</span> lookupProduct(<span class="s">"pkg:npm/request"</span>, <span class="s">"2.88.2"</span>);
+req.status;      <span class="c">// "deprecated"</span>
+req.replacement; <span class="c">// "Native fetch or a maintained HTTP client"</span></pre>
         </div>
       </div>
     </section>
