@@ -104,6 +104,7 @@
     </a>
     <nav aria-label="Main">
       <a href="#ebb">Ebb</a>
+      <a href="#docs" class="hide">Docs tools</a>
       <a href="#how" class="hide">How we build</a>
       <a href="https://github.com/velella-sh">GitHub</a>
       <button class="theme" id="theme" type="button" aria-label="Switch theme">
@@ -131,7 +132,8 @@
             <li><b>Offline by default</b><span>The rules ship inside the package. No account, no network call.</span></li>
           </ul>
           <div class="actions">
-            <a class="btn btn-primary" href="https://github.com/velella-sh/ebb">View on GitHub</a>
+            <a class="btn btn-primary" href="https://velella.sh/ebb/">Read the docs</a>
+            <a class="btn btn-quiet" href="https://github.com/velella-sh/ebb">GitHub</a>
             <a class="btn btn-quiet" href="https://www.npmjs.com/package/@velella/ebb">npm</a>
           </div>
         </div>
@@ -146,6 +148,23 @@ node.deadline; <span class="c">// "2025-04-30"</span>
 <span class="k">const</span> <span class="v">req</span> = <span class="k">await</span> lookupProduct(<span class="s">"pkg:npm/request"</span>, <span class="s">"2.88.2"</span>);
 req.status;      <span class="c">// "deprecated"</span>
 req.replacement; <span class="c">// "Native fetch or a maintained HTTP client"</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs">
+      <p class="label">Docs tools</p>
+      <h2>The tools our docs are built with.</h2>
+      <div class="values">
+        <div>
+          <h3><a href="https://velella.sh/mizzen/">Mizzen</a></h3>
+          <p>A deterministic docs engine. Markdown in, a static site out: the same input gives the same bytes, and every page keeps its exact source positions.</p>
+          <p><a href="https://velella.sh/mizzen/">Docs</a> · <a href="https://github.com/velella-sh/mizzen">GitHub</a> · <a href="https://www.npmjs.com/package/@velella/mizzen">npm</a></p>
+        </div>
+        <div>
+          <h3><a href="https://velella.sh/lateen/">Lateen</a></h3>
+          <p>A docs theme for people and agents. Layouts, components and design tokens that work without JavaScript, mirror for right-to-left languages, and meet WCAG 2.2 AA.</p>
+          <p><a href="https://velella.sh/lateen/">Docs</a> · <a href="https://github.com/velella-sh/lateen">GitHub</a> · <a href="https://www.npmjs.com/package/@velella/lateen">npm</a></p>
         </div>
       </div>
     </section>
