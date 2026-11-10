@@ -104,7 +104,8 @@
     </a>
     <nav aria-label="Main">
       <a href="#ebb">Ebb</a>
-      <a href="#docs" class="hide">Docs tools</a>
+      <a href="#mizzen" class="hide">Mizzen</a>
+      <a href="#lateen" class="hide">Lateen</a>
       <a href="#how" class="hide">How we build</a>
       <a href="https://github.com/velella-sh">GitHub</a>
       <button class="theme" id="theme" type="button" aria-label="Switch theme">
@@ -152,19 +153,51 @@ req.replacement; <span class="c">// "Native fetch or a maintained HTTP client"</
       </div>
     </section>
 
-    <section id="docs">
-      <p class="label">Docs tools</p>
-      <h2>The tools our docs are built with.</h2>
-      <div class="values">
+    <section id="mizzen">
+      <p class="label">Docs stack</p>
+      <div class="project">
         <div>
-          <h3><a href="https://velella.sh/mizzen/">Mizzen</a></h3>
-          <p>A deterministic docs engine. Markdown in, a static site out: the same input gives the same bytes, and every page keeps its exact source positions.</p>
-          <p><a href="https://velella.sh/mizzen/">Docs</a> · <a href="https://github.com/velella-sh/mizzen">GitHub</a> · <a href="https://www.npmjs.com/package/@velella/mizzen">npm</a></p>
+          <h2>Mizzen</h2>
+          <p class="sub">A deterministic docs engine. Markdown in, a static site out: the same input gives the same bytes, and every page keeps its exact source positions.</p>
+          <ul class="points"><li><b>Same input, same site</b><span>Builds are reproducible byte for byte.</span></li><li><b>Exact source positions</b><span>Every page keeps its source file and line.</span></li><li><b>Right-to-left ready</b><span>Pages mirror for right-to-left languages.</span></li></ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://velella.sh/mizzen/">Read the docs</a>
+            <a class="btn btn-quiet" href="https://github.com/velella-sh/mizzen">GitHub</a>
+            <a class="btn btn-quiet" href="https://www.npmjs.com/package/@velella/mizzen">npm</a>
+          </div>
         </div>
+        <div class="code" aria-label="Example">
+          <div class="code-head">terminal</div>
+<pre><span class="c"># install</span>
+npm install --save-dev @velella/mizzen @velella/lateen
+
+<span class="c"># check, preview, build</span>
+npx mizzen check .
+npx mizzen dev .
+npx mizzen build . --out dist</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="lateen">
+      <div class="project">
         <div>
-          <h3><a href="https://velella.sh/lateen/">Lateen</a></h3>
-          <p>A docs theme for people and agents. Layouts, components and design tokens that work without JavaScript, mirror for right-to-left languages, and meet WCAG 2.2 AA.</p>
-          <p><a href="https://velella.sh/lateen/">Docs</a> · <a href="https://github.com/velella-sh/lateen">GitHub</a> · <a href="https://www.npmjs.com/package/@velella/lateen">npm</a></p>
+          <h2>Lateen</h2>
+          <p class="sub">A docs theme for people and agents, built on Mizzen: layouts, components and design tokens in one package.</p>
+          <ul class="points"><li><b>Works without JavaScript</b><span>Pages read and navigate with scripting off.</span></li><li><b>Tested for WCAG 2.2 AA</b><span>Contrast, focus and keyboard use are checked.</span></li><li><b>Tokens, not overrides</b><span>Change accent, canvas or type in one config block.</span></li></ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://velella.sh/lateen/">Read the docs</a>
+            <a class="btn btn-quiet" href="https://github.com/velella-sh/lateen">GitHub</a>
+            <a class="btn btn-quiet" href="https://www.npmjs.com/package/@velella/lateen">npm</a>
+          </div>
+        </div>
+        <div class="code" aria-label="Example">
+          <div class="code-head">mizzen.yml</div>
+<pre><span class="k">theme</span>:
+  <span class="k">name</span>: <span class="s">"@velella/lateen"</span>
+  <span class="k">options</span>:
+    <span class="k">tokens</span>:
+      <span class="k">accent</span>: <span class="s">"#0b6e4f"</span></pre>
         </div>
       </div>
     </section>
