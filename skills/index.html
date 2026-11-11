@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Skills · Velella</title>
+<meta name="description" content="Official Agent Skills from Velella. Extend AI coding assistants with authoritative software end-of-life and deprecation intelligence.">
+<meta property="og:title" content="Agent Skills · Velella">
+<meta property="og:description" content="Extend AI coding assistants with authoritative software end-of-life and deprecation intelligence.">
+<meta property="og:url" content="https://velella.sh/skills">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root, [data-theme="night"] {
+    --bg:#1f1f28; --surface:#2a2a37; --overlay:#363646; --highlight:#54546d;
+    --muted:#727169; --subtle:#c8c093; --text:#dcd7ba;
+    --accent:#7e9cd8; --accent-text:#7fb4ca; --on-accent:#1f1f28;
+    --string:#98bb6c; --keyword:#957fb8; --number:#ffa066; --variable:#e6c384;
+    --badge-bg: rgba(126, 156, 216, 0.12); --badge-text: #7fb4ca;
+    color-scheme: dark;
+  }
+  [data-theme="day"] {
+    --bg:#eceff4; --surface:#e5e9f0; --overlay:#d8dee9; --highlight:#c5cddc;
+    --muted:#8892a6; --subtle:#4c566a; --text:#2e3440;
+    --accent:#5e81ac; --accent-text:#4c6f9a; --on-accent:#fff;
+    --string:#6c8a52; --keyword:#5e81ac; --number:#94638a; --variable:#b07d2b;
+    --badge-bg: rgba(94, 129, 172, 0.12); --badge-text: #4c6f9a;
+    color-scheme: light;
+  }
+  :root {
+    --border: color-mix(in srgb, var(--highlight) 55%, var(--bg));
+    --sans:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{font-size:16px}
+  body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-text);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:3px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+  code{font-family:var(--mono)}
+  .wrap{max-width:62rem;margin-inline:auto;padding-inline:1.5rem}
+
+  header{display:flex;align-items:center;gap:1.5rem;padding-block:1.25rem}
+  .brand{display:inline-flex;align-items:center;gap:.6rem;color:var(--text);font-weight:650;font-size:1.0625rem;letter-spacing:-.01em}
+  .brand:hover{text-decoration:none}
+  .brand svg{width:1.6rem;height:1.6rem;fill:var(--text)}
+  nav{margin-inline-start:auto;display:flex;align-items:center;gap:1.25rem;font-size:.9375rem}
+  nav a{color:var(--subtle)} nav a:hover{color:var(--text);text-decoration:none}
+  nav a.active{color:var(--accent-text);font-weight:550}
+  .theme{all:unset;cursor:pointer;display:inline-grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:6px;color:var(--subtle)}
+  .theme:hover{background:var(--overlay);color:var(--text)}
+  .theme svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+  .hero{padding-block:5rem 4rem;border-block-end:1px solid var(--border)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font:500 .8125rem var(--mono);color:var(--accent-text);padding:.2rem .7rem;background:var(--surface);border:1px solid var(--border);border-radius:999px}
+  .eyebrow i{width:.45rem;height:.45rem;border-radius:50%;background:var(--string)}
+  h1{margin:1.5rem 0 0;font-size:clamp(2.5rem,7vw,4.5rem);line-height:1.05;letter-spacing:-.04em;font-weight:650;text-wrap:balance;max-width:16ch}
+  h1 em{font-style:normal;color:var(--accent-text)}
+  .lead{margin:1.5rem 0 0;font-size:1.25rem;color:var(--subtle);max-width:38rem}
+
+  section{padding-block:3.5rem;border-block-end:1px solid var(--border)}
+  .label{font:500 .8125rem var(--mono);color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin:0 0 1.25rem}
+  h2{margin:0;font-size:clamp(1.75rem,4vw,2.25rem);line-height:1.1;letter-spacing:-.03em;font-weight:650}
+  .sub{margin:.75rem 0 0;color:var(--subtle);max-width:40rem;font-size:1.0625rem}
+
+  .skill-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-block-start:2rem}
+  .skill-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;display:grid;gap:1.5rem}
+  .skill-header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.75rem}
+  .skill-title{display:flex;align-items:center;gap:.75rem}
+  .skill-title h3{margin:0;font-size:1.5rem;font-weight:650;letter-spacing:-.02em}
+  .badge{display:inline-flex;align-items:center;padding:.15rem .6rem;border-radius:999px;font:500 .75rem var(--mono);background:var(--badge-bg);color:var(--badge-text)}
+  .badge-dim{background:var(--overlay);color:var(--muted)}
+  .skill-desc{margin:0;color:var(--subtle);font-size:1.0625rem;max-width:44rem}
+
+  .cmd-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;font:.9375rem var(--mono)}
+  .cmd-text{overflow-x:auto;white-space:nowrap}
+  .cmd-prompt{color:var(--muted);user-select:none;margin-inline-end:.5rem}
+  .copy-btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;font:500 .75rem var(--sans);color:var(--subtle);padding:.35rem .65rem;border-radius:6px;background:var(--overlay);border:1px solid var(--border);flex-shrink:0}
+  .copy-btn:hover{background:var(--highlight);color:var(--text)}
+
+  .targets{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-size:.875rem;color:var(--muted)}
+  .targets span{font:500 .75rem var(--mono);color:var(--text);background:var(--overlay);padding:.2rem .55rem;border-radius:4px}
+
+  .skill-footer{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;height:2.4rem;padding-inline:1rem;border-radius:6px;font-weight:550;font-size:.875rem;border:1px solid transparent}
+  .btn:hover{text-decoration:none}
+  .btn-primary{background:var(--accent);color:var(--on-accent)} .btn-primary:hover{filter:brightness(1.08)}
+  .btn-quiet{background:var(--overlay);border-color:var(--border);color:var(--text)} .btn-quiet:hover{border-color:var(--highlight)}
+
+  .upcoming-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem;margin-block-start:2rem}
+  .upcoming-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem}
+  .upcoming-card h4{margin:0 0 .5rem;font-size:1.125rem;font-weight:600;display:flex;align-items:center;justify-content:space-between}
+  .upcoming-card p{margin:0;color:var(--muted);font-size:.9375rem}
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem;margin-block-start:2rem}
+  .step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem}
+  .step-num{font:600 .8125rem var(--mono);color:var(--accent-text);margin-block-end:.5rem}
+  .step h3{margin:0 0 .35rem;font-size:1rem;font-weight:600}
+  .step p{margin:0;color:var(--subtle);font-size:.875rem}
+
+  footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;font-size:.875rem;color:var(--subtle)}
+  footer .sp{margin-inline-start:auto}
+
+  @media(max-width:48rem){
+    .hero{padding-block:3.5rem 3rem}
+    .skill-card{padding:1.25rem}
+    nav .hide{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><path d="M14 24 L40 24 L57 98 A90 90 0 0 1 14 24 Z"/><path d="M106 24 L80 24 L63 98 A90 90 0 0 0 106 24 Z"/></svg>
+      velella
+    </a>
+    <nav aria-label="Main">
+      <a href="/#ebb">Ebb</a>
+      <a href="/#mizzen" class="hide">Mizzen</a>
+      <a href="/skills/" class="active">Skills</a>
+      <a href="https://github.com/velella-sh">GitHub</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <span class="eyebrow"><i aria-hidden="true"></i>agent skills · local-first</span>
+      <h1>Agent Skills.<br><em>Built for autonomy.</em></h1>
+      <p class="lead">Universal capabilities for AI coding assistants. Give Claude Code, Cursor, Copilot, Codex, and Antigravity authoritative software lifecycle intelligence.</p>
+    </div>
+
+    <section id="catalog">
+      <p class="label">Available Skills</p>
+      <h2>Official Catalog</h2>
+      <p class="sub">Install with the open <code>skills</code> CLI into any agent project with a single command.</p>
+
+      <div class="skill-grid">
+        <article class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title">
+              <h3>velella-sh/ebb</h3>
+              <span class="badge">v0.2.0 · active</span>
+            </div>
+            <span class="badge badge-dim">Universal Agent Skill</span>
+          </div>
+
+          <p class="skill-desc">
+            Audits dependencies, runtimes, Docker bases, and GitHub Actions for deprecation and end-of-life before coding agents install or upgrade them. Prevents AI hallucination of deprecated APIs and abandoned packages.
+          </p>
+
+          <div class="cmd-bar">
+            <div class="cmd-text">
+              <span class="cmd-prompt">$</span><code>npx skills add velella-sh/ebb</code>
+            </div>
+            <button class="copy-btn" data-copy="npx skills add velella-sh/ebb" aria-label="Copy command">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+
+          <div class="targets">
+            Supported agents:
+            <span>Claude Code</span>
+            <span>Cursor</span>
+            <span>GitHub Copilot</span>
+            <span>Codex</span>
+            <span>Windsurf</span>
+            <span>Antigravity</span>
+          </div>
+
+          <div class="skill-footer">
+            <a class="btn btn-primary" href="https://skills.sh/velella-sh/ebb/ebb" target="_blank" rel="noopener">View on skills.sh ↗</a>
+            <a class="btn btn-quiet" href="https://velella.sh/ebb/skills">Documentation</a>
+            <a class="btn btn-quiet" href="https://github.com/velella-sh/ebb/tree/main/skills/ebb">Source Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="pipeline">
+      <p class="label">In the works</p>
+      <h2>Upcoming Skills</h2>
+      <p class="sub">Next-generation autonomous guardrails and documentation engines currently in development.</p>
+
+      <div class="upcoming-grid">
+        <div class="upcoming-card">
+          <h4>velella-sh/offing <span class="badge badge-dim">Planned</span></h4>
+          <p>Automated migration recipes and code remediation when end-of-life packages or deprecated methods are detected.</p>
+        </div>
+        <div class="upcoming-card">
+          <h4>velella-sh/mizzen <span class="badge badge-dim">Planned</span></h4>
+          <p>Deterministic documentation validator and schema enforcement for agent-generated Markdown and API references.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <p class="label">Architecture</p>
+      <h2>How Skills Work</h2>
+      <p class="sub">Built on the open standard specified by skills.sh and Claude Code plugins.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Declarative Markdown</h3>
+          <p>Every skill contains a standard <code>SKILL.md</code> defining precise trigger conditions, inputs, and output formats.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Zero-Dependency CLI</h3>
+          <p>Runs offline and locally via <code>ebb check</code> or <code>lookup</code> without mandatory network calls or external tracking.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Structured Output</h3>
+          <p>Returns clear, actionable statuses (<code>supported</code>, <code>deprecated</code>, <code>end-of-life</code>) and cited migration sources.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© Velella</span>
+    <a href="/">Home</a>
+    <a href="https://github.com/velella-sh">GitHub</a>
+    <a href="mailto:contact@velella.sh">contact@velella.sh</a>
+    <span class="sp">Stay afloat. Ready for any wind.</span>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var root=document.documentElement, key='velella-theme', saved=null;
+    try{saved=localStorage.getItem(key)}catch(e){}
+    var t=saved||(matchMedia('(prefers-color-scheme: light)').matches?'day':'night');
+    root.dataset.theme=t;
+    document.getElementById('theme').addEventListener('click',function(){
+      t=root.dataset.theme==='night'?'day':'night'; root.dataset.theme=t;
+      try{localStorage.setItem(key,t)}catch(e){}
+    });
+
+    document.querySelectorAll('.copy-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var text = btn.getAttribute('data-copy');
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(function(){
+          var label = btn.querySelector('span');
+          var orig = label.textContent;
+          label.textContent = 'Copied!';
+          setTimeout(function(){ label.textContent = orig; }, 1800);
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
