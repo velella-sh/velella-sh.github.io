@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "projects": [
+    {"id": "mizzen", "path": "mizzen", "title": "Mizzen", "public": true, "analytics": {"provider": "cloudflare", "site": "3ca3e705298a434c948a41f20904fad3"}},
+    {"id": "lateen", "path": "lateen", "title": "Lateen", "public": true, "analytics": {"provider": "cloudflare", "site": "3ca3e705298a434c948a41f20904fad3"}},
+    {"id": "offing", "path": "offing", "title": "Offing", "public": true, "analytics": {"provider": "cloudflare", "site": "3ca3e705298a434c948a41f20904fad3"}},
+    {"id": "ebb", "path": "ebb", "title": "Ebb", "public": true, "analytics": {"provider": "cloudflare", "site": "3ca3e705298a434c948a41f20904fad3"}}
+  ]
+}
