@@ -1,0 +1,34 @@
+# The Velella root site, read by Mizzen. Published at https://velella.sh; each project publishes below its own path.
+title: Velella
+description: Velella builds open-source tools that find what breaks next. Stay afloat. Ready for any wind.
+lang: en
+url: https://velella.sh
+analytics:
+  provider: cloudflare
+  site: 3ca3e705298a434c948a41f20904fad3
+  allowedOrigins:
+    - https://static.cloudflareinsights.com
+    - https://cloudflareinsights.com
+repository:
+  url: https://github.com/velella-sh/velella-sh.github.io
+  branch: main
+  dir: site
+theme:
+  name: "@velella/lateen"
+  options:
+    logo:
+      light: /brand/mark-light.svg
+      dark: /brand/mark-dark.svg
+    favicon:
+      svg: /brand/favicon.svg
+      ico: /brand/favicon.ico
+      apple: /brand/apple-touch-icon.png
+    footer:
+      copyright: "© Velella"
+      links:
+        - title: GitHub
+          url: https://github.com/velella-sh
+        - title: Skills
+          url: /skills/
+        - title: contact@velella.sh
+          url: mailto:contact@velella.sh
