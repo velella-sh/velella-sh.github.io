@@ -1,18 +1,19 @@
 # velella-sh.github.io
 
-The Velella landing site, served by GitHub Pages at https://velella.sh. Static HTML and inline CSS; no build step and no dependencies.
+The Velella root site, served by GitHub Pages at https://velella.sh. It is built with Mizzen and the Lateen theme from `site/`; each project (`/ebb`, `/mizzen`, `/lateen`, `/offing`) publishes its own site below its path from its own repository.
 
-- Start with the affected page: `index.html` for the landing page or `skills/index.html` for Agent Skills. Check both when changing shared styles or theme behavior.
-- Keep `CNAME` and `.nojekyll`; Pages needs both.
-- Styles are inline in each page. The design tokens are in `:root` and the `[data-theme="day"]` block; reuse the existing token names instead of adding colors.
-- The only script is the inline theme toggle. Keep it inline, dependency-free, and safe when `localStorage` throws.
-- External requests are limited to Google Fonts. Do not add analytics or other third-party scripts.
-- Keep both pages working at narrow widths, keyboard accessible, and readable without the theme script.
+- Pages are Markdown in `site/` (`index.md`, `skills.md`); configuration is `site/mizzen.yml`.
+- `site/network.lock.json` is the pinned copy of the shared network list. Refresh it with `mizzen network update site`, never by hand.
+- The deploy workflow builds the site, then `mizzen network sitemap` writes the root `sitemap.xml` index and `robots.txt` over the output. Do not add a root `sitemap.xml` or `robots.txt` by hand.
+- Analytics is Cloudflare Web Analytics through the `analytics` key in `site/mizzen.yml`; add no other third-party scripts.
+- Keep `CNAME` and `.nojekyll`. Pages' source is "GitHub Actions".
 
-Check locally:
+Check locally (Node 24 or later):
 
 ```bash
-python3 -m http.server 8000
+npm install --no-save @velella/mizzen@0.2.7 @velella/lateen@0.2.5
+npx mizzen check site --theme node_modules/@velella/lateen
+npx mizzen dev site --theme node_modules/@velella/lateen
 ```
 
 One change per commit. No secrets.

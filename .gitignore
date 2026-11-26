@@ -1,1 +1,5 @@
 .DS_Store
+velella.sh
+node_modules/
+dist/
+.mizzen/
